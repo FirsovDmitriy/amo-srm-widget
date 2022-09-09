@@ -1,15 +1,26 @@
 import React from 'react'
+import './NoteCard.scss'
 
-const NoteCard = () => {
+const NoteCard = ({ note, edit, remove }) => {
   return (
-    <div>
-      <h2>Title</h2>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut modi saepe libero omnis voluptatibus amet. Expedita, alias, corporis impedit voluptas eligendi reiciendis perferendis eaque consequatur exercitationem, deleniti ab aut voluptatem?
+    <div className='card'>
+      <h2 className='card__title'>{ note.title[0].toUpperCase() + note.title.slice(1) }</h2>
+      <p className='card__text'>
+        { note.body[0].toUpperCase() + note.body.slice(1) }
       </p>
-      <div>
-        <button>Редактировать</button>
-        <button>Удалить</button>
+      <div className='card__footer'>
+        <button
+          onClick={ () => edit(note.id) }
+          className='card__button'
+        >
+          Редактировать
+        </button>
+        <button
+          onClick={ () => remove(note.id) }
+          className='card__button'
+        >
+          Удалить
+        </button>
       </div>
     </div>
   )

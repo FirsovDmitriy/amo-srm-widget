@@ -2,6 +2,9 @@
 
 .form {
   padding: 30px;
+  border-radius: $rounded;
+  border: 1px solid $border-color;
+  margin-bottom: 40px;
 }
 
 .form__row {
@@ -24,4 +27,5 @@
   padding: 12px 8px;
   background-color: transparent;
   border-radius: $rounded;
+  border: 1px solid $border-color
 }

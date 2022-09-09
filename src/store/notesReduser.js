@@ -5,9 +5,13 @@ const defaultState = {
 export const notesReduser = (state = defaultState, action) => {
   switch (action.type) {
     case 'ADD_NOTE':
-      return {}
+      return { ...state, notes: [...state.notes, action.payload] }
     case 'INIT_NOTES':
-      return { ...state, notes: [...state.notes, ...action.payload] }
+      return { ...state, notes: [...action.payload] }
+    case 'EDIT_NOTE':
+      return state.notes.find(note => note.id === action.payload)
+    case 'REMOVE_NOTE':
+      return { ...state, notes: state.notes.filter(note => note.id !== action.payload) }
     default:
       return state
   }
