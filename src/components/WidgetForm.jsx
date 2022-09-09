@@ -19,25 +19,25 @@ const WidgetForm = ({ addNote }) => {
   }
 
   return (
-    <form className='form' onSubmit={ createNote }>
+    <form className='form'  onSubmit={ createNote }>
 
       <div className="form__row">
-        <label className='form__label'>Заголовок</label>
         <input
           onChange={ event => setTitle(event.target.value) }
           value={ title }
           className='form__control'
           type="text"
+          placeholder='Заголовок заметки'
         />
       </div>
 
       <div className="form__row">
-        <label className='form__label'>Описание</label>
         <input
           onChange={ event => setText(event.target.value) }
           value={ text }
           className='form__control'
           type="text"
+          placeholder='Текст заметки'
         />
       </div>
 

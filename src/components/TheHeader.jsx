@@ -5,7 +5,7 @@ const TheHeader = () => {
   return (
     <div className='header'>
       <div className="header__content">
-        Header
+        Страница заметок
       </div>
     </div>
   )

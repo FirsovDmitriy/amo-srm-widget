@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import NoteCard from './components/NoteCard'
 import TheHeader from './components/TheHeader'
 import WidgetForm from './components/WidgetForm'
 import { fetchNotes } from './store/asyncAction/notes'
 import './App.scss'
-import Popup from './components/Popup/Popup'
 
 const App = () => {
-
-  const [active, setActive] = useState(false)
 
   const dispatch = useDispatch()
   const notes = useSelector(state => state.notes.notes)
@@ -22,9 +19,9 @@ const App = () => {
     dispatch({ type: 'ADD_NOTE', payload: newPost })
   }
 
-  const editNote = id => {
-    console.log(id)
-    dispatch({ type: 'EDIT_NOTE', payload: id })
+  const saveNote = (editedNote) => {
+    console.log(editedNote)
+    dispatch({ type: 'EDIT_NOTE', payload: editedNote })
   }
 
   const removeNote = id => {
@@ -45,7 +42,7 @@ const App = () => {
                     <NoteCard
                       note={ note }
                       key={ note.id }
-                      edit={ editNote }
+                      save={ saveNote }
                       remove={ removeNote }
                       className='widget__card'
                     /> 
@@ -59,7 +56,6 @@ const App = () => {
         }
       </div>
       {/* /.widget__container */}
-      <Popup active={ active } />
     </div>
   )
 }

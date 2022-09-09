@@ -29,3 +29,49 @@
   border-radius: $rounded;
   border: 1px solid $border-color
 }
+
+.form__control::placeholder {
+  line-height: 1.1;
+  opacity: 0.5;
+}
+
+.form__button {
+  padding: 10px 20px;
+
+  &:hover {
+    background-color: #6A647C;
+    border-color: #6A647C;
+  }
+}
+
+input::-webkit-input-placeholder {
+  transition: var(--transition, opacity 0.2s ease);
+}
+
+input::-moz-placeholder {
+  transition: var(--transition);
+}
+
+input:-moz-placeholder {
+  transition: var(--transition);
+}
+
+input:-ms-input-placeholder {
+  transition: var(--transition);
+}
+
+input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+input:focus::-moz-placeholder {
+  opacity: 0;
+}
+
+input:focus:-moz-placeholder {
+  opacity: 0;
+}
+
+input:focus:-ms-input-placeholder {
+  opacity: 0;
+}
