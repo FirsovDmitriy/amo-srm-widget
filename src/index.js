@@ -5,7 +5,7 @@ import App from './App'
 import './styles/index.scss'
 import store from './store/redux'
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(document.querySelector('#list_page_holder'))
 root.render(
   <React.StrictMode>
     <Provider store={ store }>
