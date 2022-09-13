@@ -3,31 +3,43 @@ import { useDispatch, useSelector } from 'react-redux'
 import NoteCard from './components/NoteCard'
 import TheHeader from './components/TheHeader'
 import WidgetForm from './components/WidgetForm'
-import { fetchNotes } from './store/asyncAction/notes'
 import './App.scss'
+import { ADD_NOTE, REMOVE_NOTE, EDIT_NOTE } from './store/notesSlice'
+import { getNotes } from './store/asyncAction/notes'
 
 const App = () => {
 
+
+
   const dispatch = useDispatch()
   const notes = useSelector(state => state.notes.notes)
+  console.log('notes', notes)
 
-  useEffect(() => {
-    dispatch(fetchNotes())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(fetchNotes())
+  // }, [dispatch])
 
-  const addNote = newPost => {
-    dispatch({ type: 'ADD_NOTE', payload: newPost })
+  // ----
+
+  const { data } = getNotes()
+  console.log('data', data)
+
+  // ------------------
+
+  const addNote = newNote => {
+    // dispatch({ type: 'ADD_NOTE', payload: newPost })
+    dispatch(ADD_NOTE(newNote))
   }
 
   const saveNote = (editedNote) => {
-    console.log(editedNote)
-    dispatch({ type: 'EDIT_NOTE', payload: editedNote })
+    dispatch(EDIT_NOTE(editedNote))
   }
 
   const removeNote = id => {
-    dispatch({ type: 'REMOVE_NOTE', payload: id })
+    // dispatch({ type: 'REMOVE_NOTE', payload: id })
+    dispatch(REMOVE_NOTE({ id }))
   }
- 
+
   return (
     <div className='widget'>
       <TheHeader />
