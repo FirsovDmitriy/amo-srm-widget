@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import notesReduser from './notesSlice'
-import { notesApi } from './asyncAction/notes'
+import { noteApi } from './asyncAction/notes'
 
 
 // const rootReduser = combineReducers({
@@ -12,7 +12,7 @@ import { notesApi } from './asyncAction/notes'
 const store = configureStore({
   reducer: {
     notes: notesReduser,
-    [notesApi.reducerPath]: notesApi.reducer
+    [noteApi.reducerPath]: noteApi.reducer
   }
 })
 

@@ -8,16 +8,16 @@
 //   }
 // }
 
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const LIMIT = 6
 
-export const notesApi =  createApi({
-  reducerPath: 'notesApi',
-  baseQuery: fetchBaseQuery({ baseUrl:  `https://jsonplaceholder.typicode.com/posts?_limit=${LIMIT}` }),
-  // endpoints: (builder) => ({
-  //   notesData: 
-  // })
+export const noteApi =  createApi({
+  reducerPath: 'noteApi',
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com/' }),
+  endpoints: build => ({
+    getNotes: build.query({ query: () => `posts?_limit=${LIMIT}` })
+  })
 })
 
-export const { getNotes } = notesApi
+export const { useGetNotesQuery } = noteApi

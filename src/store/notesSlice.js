@@ -1,13 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const defaultState = {
-  notes: [
-    {
-      id: 1,
-      title: 'Title',
-      body: 'Text'
-    }
-  ]
+  notes: []
 }
 
 export const notesSlice = createSlice({

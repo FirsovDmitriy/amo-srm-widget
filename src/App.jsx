@@ -5,7 +5,7 @@ import TheHeader from './components/TheHeader'
 import WidgetForm from './components/WidgetForm'
 import './App.scss'
 import { ADD_NOTE, REMOVE_NOTE, EDIT_NOTE } from './store/notesSlice'
-import { getNotes } from './store/asyncAction/notes'
+import { useGetNotesQuery } from './store/asyncAction/notes'
 
 const App = () => {
 
@@ -21,8 +21,9 @@ const App = () => {
 
   // ----
 
-  const { data } = getNotes()
+  const { data, isLoading, error } = useGetNotesQuery()
   console.log('data', data)
+  
 
   // ------------------
 
