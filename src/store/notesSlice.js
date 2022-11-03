@@ -9,6 +9,11 @@ export const notesSlice = createSlice({
   initialState: defaultState,
   reducers: {
 
+    INIT_NOTES: (state, action) => {
+      let { notes } = state
+      state.notes = notes.concat(action.payload)
+    },
+
     ADD_NOTE: (state, action) => {
       state.notes.push(action.payload)
     },
@@ -29,5 +34,5 @@ export const notesSlice = createSlice({
   }
 })
 
-export const { ADD_NOTE, EDIT_NOTE, REMOVE_NOTE } = notesSlice.actions
+export const { INIT_NOTES, ADD_NOTE, EDIT_NOTE, REMOVE_NOTE } = notesSlice.actions
 export default notesSlice.reducer

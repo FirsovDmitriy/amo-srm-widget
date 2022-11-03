@@ -4,28 +4,25 @@ import NoteCard from './components/NoteCard'
 import TheHeader from './components/TheHeader'
 import WidgetForm from './components/WidgetForm'
 import './App.scss'
-import { ADD_NOTE, REMOVE_NOTE, EDIT_NOTE } from './store/notesSlice'
+import { INIT_NOTES, ADD_NOTE, REMOVE_NOTE, EDIT_NOTE } from './store/notesSlice'
 import { useGetNotesQuery } from './store/asyncAction/notes'
 
 const App = () => {
-
-
-
-  const dispatch = useDispatch()
-  const notes = useSelector(state => state.notes.notes)
-  console.log('notes', notes)
-
-  // useEffect(() => {
-  //   dispatch(fetchNotes())
-  // }, [dispatch])
 
   // ----
 
   const { data, isLoading, error } = useGetNotesQuery()
   console.log('data', data)
   
-
   // ------------------
+
+  const dispatch = useDispatch()
+  const notes = useSelector(state => state.notes.notes)
+
+  // useEffect(() => {
+  //   dispatch(INIT_NOTES(data))
+  // }, [dispatch])
+
 
   const addNote = newNote => {
     // dispatch({ type: 'ADD_NOTE', payload: newPost })
@@ -51,7 +48,7 @@ const App = () => {
 
               <div className='widget__list-notes'>
                 {
-                  notes.map(note =>
+                  notes?.map(note =>
                     <NoteCard
                       note={ note }
                       key={ note.id }
@@ -63,7 +60,7 @@ const App = () => {
                 }
               </div>
               :
-              <div>
+              <div className='widget__empty'>
                 Пусто
               </div>
         }
